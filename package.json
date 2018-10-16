@@ -1,0 +1,22 @@
+{
+  "name": "exercise-app",
+  "version": "1.0.0",
+  "description": "1. **Weight tracker**\r      - Keep track of weight each day \r      - Displays graph of weight progress\r 1. **Food tracker**\r      - Keeps track of calories by meal\r      - Keeps track of total calories\r      - Tells you how many calories are left for the day\r        - Adding to exercises will increase the calories left for the day\r      - Keeps track of water intake\r 1. **Exercise**\r      - List of exercises by category\r      - Keeps track of exercises",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fusaroalyssa/Exercise-App.git"
+  },
+  "author": "Alyssa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fusaroalyssa/Exercise-App/issues"
+  },
+  "homepage": "https://github.com/fusaroalyssa/Exercise-App#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
