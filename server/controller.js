@@ -1,5 +1,5 @@
 const express = require('express');
-const {UserData, User, Exercise, Friend, Weight} = require('./model');
+const {UserData, User, Exercise, Friend, Weight, Meal} = require('./model');
 
 const userData = new UserData();
 
@@ -51,6 +51,13 @@ app.post("/user/weight/:name", (req, res) => {
     const user = userData.getUser(req.params.name);
     const weight = new Weight(req.body.date, req.body.weight);
     res.send(user.addWeight(weight));
+})
+
+//add meal to a user
+app.post("/user/meal/:name", (req, res) => {
+    const user = userData.getUser(req.params.name);
+    const meal = new Meal(req.body.date, req.body.mealTime, req.body.food);
+    res.send(user.addMeal(meal));
 })
 
 
