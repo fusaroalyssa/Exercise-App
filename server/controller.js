@@ -1,5 +1,5 @@
 const express = require('express');
-const {UserData, User, Exercise} = require('./model');
+const {UserData, User, Exercise, Friend} = require('./model');
 
 const userData = new UserData();
 
@@ -36,6 +36,14 @@ app.post("/users/exercise/:name", (req, res) => {
     const user = userData.getUser(req.params.name);
     const exercise = new Exercise(req.body.exName, req.body.hour, req.body.min, req.body.sec);
     res.send(user.addExercise(exercise));
+})
+
+
+//add a friend to a user
+app.post("/users/friend/:name", (req, res) => {
+    const user = userData.getUser(req.params.name);
+    const friend = new Friend(req.body.name);
+    res.send(user.addFriend(friend));
 })
 
 

@@ -14,15 +14,6 @@ class UserData
     {
         var index = this.users.findIndex(user => user.name === name);
         return this.users[index];
-        /*
-       var i;
-       for(i = 0; i< this.users.length; i++)
-       {
-           if(name === this.users[i].name)
-           {
-               return this.users[i];
-           }
-       }*/
     }
 }
 
@@ -62,6 +53,14 @@ class Exercise
     }
 }
 
+class Friend
+{
+    constructor(name)
+    {
+        this.name = name;
+    }
+}
+
 module.exports = {
-    UserData, User, Exercise
+    UserData, User, Exercise, Friend
 }
