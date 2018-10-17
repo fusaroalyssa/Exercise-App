@@ -27,6 +27,7 @@ class User
         this.password = password;
         this.exercises = [];
         this.friendsList = [];
+        this.weights = [];
     } 
 
     addExercise(exercise)
@@ -37,6 +38,11 @@ class User
     addFriend(friend)
     {
         this.friendsList.push(friend);
+    }
+    
+    addWeight(weight)
+    {
+        this.weights.push(weight);
     }
 }
 
@@ -61,6 +67,15 @@ class Friend
     }
 }
 
+class Weight
+{
+    constructor(date, weight)
+    {
+        this.date = date;
+        this.weight = weight;
+    }
+}
+
 module.exports = {
-    UserData, User, Exercise, Friend
+    UserData, User, Exercise, Friend, Weight
 }

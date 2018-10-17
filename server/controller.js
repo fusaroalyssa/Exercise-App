@@ -1,5 +1,5 @@
 const express = require('express');
-const {UserData, User, Exercise, Friend} = require('./model');
+const {UserData, User, Exercise, Friend, Weight} = require('./model');
 
 const userData = new UserData();
 
@@ -46,6 +46,12 @@ app.post("/users/friend/:name", (req, res) => {
     res.send(user.addFriend(friend));
 })
 
+//add weight entry to a user
+app.post("/user/weight/:name", (req, res) => {
+    const user = userData.getUser(req.params.name);
+    const weight = new Weight(req.body.date, req.body.weight);
+    res.send(user.addWeight(weight));
+})
 
 
 module.exports = app;
