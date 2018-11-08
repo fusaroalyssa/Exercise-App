@@ -1,22 +1,53 @@
 {
-  "name": "exercise-app",
-  "version": "1.0.0",
-  "description": "1. **Weight tracker**\r      - Keep track of weight each day \r      - Displays graph of weight progress\r 1. **Food tracker**\r      - Keeps track of calories by meal\r      - Keeps track of total calories\r      - Tells you how many calories are left for the day\r        - Adding to exercises will increase the calories left for the day\r      - Keeps track of water intake\r 1. **Exercise**\r      - List of exercises by category\r      - Keeps track of exercises",
-  "main": "index.js",
+  "name": "what-do-you-meme-fall-2018",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/index.js",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fusaroalyssa/Exercise-App.git"
-  },
-  "author": "Alyssa",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/fusaroalyssa/Exercise-App/issues"
-  },
-  "homepage": "https://github.com/fusaroalyssa/Exercise-App#readme",
+  "homepage": "https://github.com/fusaroalyssa/Exercise-App",
   "dependencies": {
-    "express": "^4.16.4"
-  }
+    "axios": "^0.18.0",
+    "bootstrap": "^4.1.3",
+    "express": "^4.16.3",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.4",
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.1",
+    "@vue/cli-plugin-eslint": "^3.0.1",
+    "@vue/cli-service": "^3.0.1",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
 }
