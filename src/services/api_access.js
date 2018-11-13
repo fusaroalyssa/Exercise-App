@@ -3,8 +3,11 @@ const api_root = "http://localhost:80/userData";
 export function GetState(){
     return myFetch(api_root + "/");
 }
-
-
+/*
+export function Login(name, fbid, access_token){
+    return myFetch(api_root + `/users`, { name, fbid, access_token})
+        .then(x=> user = x.id);
+*/
 
   function myFetch(url = ``, data = null) {
       let options = {

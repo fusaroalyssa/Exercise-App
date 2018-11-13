@@ -20,7 +20,9 @@ app.post("/users", function(req, res){
 
 //display all users info in database
 app.get("/users", function(req, res){
-    res.send(userData.users);
+    const User = userData.login(req.body.name, req.body.fbid, req.body.access_token)
+    res.send(User);
+    //res.send(userData.users);
 })
 
 
