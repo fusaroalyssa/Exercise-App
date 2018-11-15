@@ -15,7 +15,7 @@ app.get("/", function(req, res){
 app.post("/users", function(req, res){
     const user = new User(req.body.name, req.body.email, req.body.password)
     userData.addUser(user);
-    res.send(userData.user + " user added");
+    res.send(user);
 })
 
 //display all users info in database

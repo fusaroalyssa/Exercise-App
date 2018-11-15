@@ -1,11 +1,11 @@
 //const api_root = "http://localhost:80/userData";
-const api_root = "http://localhost:80/";
+const api_root = "http://localhost:80";
 
 export function GetState(){
     return myFetch(api_root + "/");
 }
-export function AddUser(){
-    return myFetch(api_root + `/users`, {text: "Alyssa"})
+export function AddUser(user){
+    return myFetch(api_root + `/users`, user)
 }
 export function GetUsers(){
     return myFetch(api_root + `/users`)
