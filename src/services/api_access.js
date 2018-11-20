@@ -1,19 +1,24 @@
 //const api_root = "http://localhost:80/userData";
 const api_root = "http://localhost:80";
+export let UserId = null;
 
 export function GetState(){
     return myFetch(api_root + "/");
 }
 export function AddUser(user){
+    UserId = user.name;
     return myFetch(api_root + `/users`, user)
 }
 export function GetUsers(){
     return myFetch(api_root + `/users`)
 }
+export function AddWeight(weight){
+    return myFetch(api_root + `/user/weight/${UserId}`, weight)
+}
 /*
 export function Login(name, fbid, access_token){
     return myFetch(api_root + `/users`, { name, fbid, access_token})
-        .then(x=> user = x.id);
+        .then(x=> UserId = x.id);
 */
 
   function myFetch(url = ``, data = null) {
