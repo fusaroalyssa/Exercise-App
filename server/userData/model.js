@@ -55,8 +55,9 @@ class User
 
 class Exercise
 {
-    constructor(exName, hour, min, sec)
+    constructor(date, exName, hour, min, sec)
     {
+        this.date = date;
         this.exName = exName;
         this.hour = hour;
         this.min = min;

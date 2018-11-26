@@ -1,5 +1,7 @@
 <template>
   <div class="home">
+
+  <h3>Create Account</h3>
   <form @submit.prevent="addUser">
     <div class="form-group">
       <label for="exampleInputName">Name</label>
@@ -16,6 +18,11 @@
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 
+  <h3>Login with Facebook</h3>
+  <form @submit.prevent="login">
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+
   </div>   
 </template>
 
@@ -25,6 +32,8 @@
 
 <script>
 import * as api from '@/services/api_access';
+import * as fb from '@/services/facebook';
+
 export default {
   data(){
     return{
@@ -44,7 +53,10 @@ export default {
     },
     getUsers(){
       api.GetUsers()
-    }
+    },
+    login() {
+      fb.FBLogin();
+    },
   }
 }
 </script>

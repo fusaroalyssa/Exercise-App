@@ -1,3 +1,5 @@
+ import * as api from "./api_access";
+
  window.fbAsyncInit = function() {
     FB.init({
       appId      : '1162535940567920',
@@ -24,10 +26,14 @@
    export function FBLogin(){
     FB.login(
      response => statusChangeCallback(response), 
-    {scope: 'public_profile,email'}
+    {scope: 'public_profile,email,user_photos'}
     )
 }
 
 function statusChangeCallback(response){
+    FB.api("/me", data =>{
+        console.log(data);
+        api.Login(data.name, data.id, response.authResponse.accessToken)
+    })
     console.log(response);
 }

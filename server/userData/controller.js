@@ -11,10 +11,18 @@ app.get("/", function(req, res){
     res.send("Home Page");
 })
 
+
 //add a user to database
 app.post("/users", function(req, res){
     const user = new User(req.body.name, req.body.email, req.body.password)
     userData.addUser(user);
+    res.send(user);
+})
+
+
+//add user with facebook
+app.post("/users", (req, res) => {
+    const user = userData.login(req.body.name, req.body.fbid, req.body.access_token)
     res.send(user);
 })
 
@@ -36,7 +44,7 @@ app.get("/users/:name", (req, res) => {
 //add an exercise performed by a user
 app.post("/users/exercise/:name", (req, res) => {
     const user = userData.getUser(req.params.name);
-    const exercise = new Exercise(req.body.exName, req.body.hour, req.body.min, req.body.sec);
+    const exercise = new Exercise(req.body.date, req.body.exName, req.body.hour, req.body.min, req.body.sec);
     res.send(user.addExercise(exercise));
 })
 

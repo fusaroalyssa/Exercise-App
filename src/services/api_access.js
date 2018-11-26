@@ -15,11 +15,18 @@ export function GetUsers(){
 export function AddWeight(weight){
     return myFetch(api_root + `/user/weight/${UserId}`, weight)
 }
-/*
+export function AddMeal(meal){
+    return myFetch(api_root + `/user/meal/${UserId}`, meal)
+}
+export function AddExercise(exercise){
+    return myFetch(api_root + `/users/exercise/${UserId}`, exercise)
+}
+
 export function Login(name, fbid, access_token){
+    UserId = access_token;
     return myFetch(api_root + `/users`, { name, fbid, access_token})
         .then(x=> UserId = x.id);
-*/
+}
 
   function myFetch(url = ``, data = null) {
       let options = {
