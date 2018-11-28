@@ -27,6 +27,57 @@
     <button type="submit" class="btn btn-primary">Login</button>
   </form>
 
+  <button @click.prevent="getState">getTables Button</button>
+    
+    <table  class="table table-bordered table-primary">
+    <thead class="thead-dark">
+        <tr>
+        <th scope="col">Date (year-month-day)</th>
+        <th scope="col">Weight</th>
+        </tr>
+    </thead>
+    <tbody v-for="w in state.weight" :key="w">
+        <tr>
+        <th scope="row">{{w.date}}</th>
+        <td>{{w.weight}}</td>
+        </tr>
+    </tbody>
+    </table>
+
+    <table  class="table table-bordered table-primary">
+    <thead class="thead-dark">
+        <tr>
+        <th scope="col">Date (year-month-day)</th>
+        <th scope="col">Time</th>
+        <th scope="col">Food</th>
+        </tr>
+    </thead>
+    <tbody v-for="m in state.meal" :key="m">
+        <tr>
+        <th scope="row">{{m.date}}</th>
+        <td>{{m.mealTime}}</td>
+        <td>{{m.food}}</td>
+        </tr>
+    </tbody>
+    </table>
+
+    <table  class="table table-bordered table-primary">
+    <thead class="thead-dark">
+        <tr>
+        <th scope="col">Date (year-month-day)</th>
+        <th scope="col">Exercise</th>
+        <th scope="col">Time</th>
+        </tr>
+    </thead>
+    <tbody v-for="e in state.exercise" :key="e">
+        <tr>
+        <th scope="row">{{e.date}}</th>
+        <td>{{e.exName}}</td>
+        <td>hour: {{e.hour}} min: {{e.min}} sec: {{e.sec}}</td>
+        </tr>
+    </tbody>
+    </table>
+
 
   </div>   
 </template>
