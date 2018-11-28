@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="container">
     <div class="display-3">
-      <img alt="Vue logo" src="./assets/logo.png" id="logo">
+      <img  v-if="UserName() !== null" :src="`https://graph.facebook.com/${FBID()}/picture`" />
       Exercise App
     </div>
     <Nav />
@@ -16,6 +16,7 @@
 
 <script>
 // @ is an alias to /src
+import * as api from '@/services/api_access';
 import Nav from '@/components/Nav.vue'
 import '@/services/facebook'
 
@@ -23,6 +24,11 @@ export default {
   name: 'home',
   components: {
     Nav
+  },
+  methods:{
+    FBID: ()=> api.FBID,
+    UserId: ()=> api.UserId,
+    UserName: ()=> api.UserName
   }
 }
 </script>

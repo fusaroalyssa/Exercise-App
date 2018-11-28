@@ -1,7 +1,7 @@
 <template>
   <div class="home">
 
-<img :src="`https://graph.facebook.com/${FBID()}/picture`" />
+<!--<img :src="`https://graph.facebook.com/${FBID()}/picture`" />-->
 <h3 v-if="UserName() !== null">Welcome {{UserName()}}</h3>
 <h3 v-if="UserName() === null">Not logged in</h3>
 <!--
