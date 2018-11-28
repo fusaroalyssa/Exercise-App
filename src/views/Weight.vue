@@ -13,6 +13,8 @@
         <button type="submit" class="btn btn-primary">Submit</button>
    </form>
 
+
+
 </div>
 </template>
 
@@ -25,7 +27,12 @@ import * as api from '@/services/api_access';
 export default {
     data(){
         return{
-            date: null, email:null
+            date: null, email:null,
+            state: {
+                //weight: []  
+            },
+            weights: []
+
         }
     },
     methods: {
@@ -35,6 +42,10 @@ export default {
         },
         addWeight(){
             api.AddWeight({date: this.date, weight: this.weight})
+        },
+        getWeight(){
+            api.GetWeight()
+            .then(x=> this.weights = x)
         }
     }
 }

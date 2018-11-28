@@ -59,6 +59,11 @@ class User
         this.weights.push(weight);
     }
 
+    getWeight()
+    {
+        return this.weights;
+    }
+
     addMeal(meal)
     {
         this.meals.push(meal);

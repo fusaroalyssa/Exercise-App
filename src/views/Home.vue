@@ -27,6 +27,13 @@
     <button type="submit" class="btn btn-primary">Login</button>
   </form>
 
+  <h1 v-for="w in state.weight" :key="w">weight {{w}}</h1>
+
+  <form @submit.prevent="getWeight">
+    <button type="submit" class="btn btn-primary">getweight</button>
+    <h1 v-for="w in state.weight" :key="w">my weight {{w}}</h1>
+  </form>
+
   </div>   
 </template>
 
@@ -44,7 +51,7 @@ export default {
       //name: this.login,
       //name: null, email: null, password: null,
       state:{
-        //users: []
+        weight: []
       }
     }
   },
@@ -61,6 +68,10 @@ export default {
     },
     login() {
       fb.FBLogin();
+    },
+    getWeight(){
+      api.GetWeight()
+      .then(x=> this.state.weight = x)
     },
     /*getFBid() {
       api.getFBID();

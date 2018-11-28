@@ -8,7 +8,7 @@ const app = express.Router();
 
 //Home Page
 app.get("/", function(req, res){
-    res.send("Home Page");
+    res.send(...userData);
 })
 
 
@@ -38,23 +38,23 @@ app.get("/users", function(req, res){
 
 
 //get a user
-app.get("/users/:name", (req, res) => {
-    res.send(userData.getUser(req.params.name));
+app.get("/users/:fbid", (req, res) => {
+    res.send(userData.getUser(req.params.fbid));
     //console.log(userData.getUser(req.params.name));
 })
 
 
 //add an exercise performed by a user
-app.post("/users/exercise/:name", (req, res) => {
-    const user = userData.getUser(req.params.name);
+app.post("/users/exercise/:fbid", (req, res) => {
+    const user = userData.getUser(req.params.fbid);
     const exercise = new Exercise(req.body.date, req.body.exName, req.body.hour, req.body.min, req.body.sec);
     res.send(user.addExercise(exercise));
 })
 
 
 //add a friend to a user
-app.post("/users/friend/:name", (req, res) => {
-    const user = userData.getUser(req.params.name);
+app.post("/users/friend/:fbid", (req, res) => {
+    const user = userData.getUser(req.params.fbid);
     const friend = new Friend(req.body.name);
     res.send(user.addFriend(friend));
 })
@@ -66,9 +66,17 @@ app.post("/user/weight/:fbid", (req, res) => {
     res.send(user.addWeight(weight));
 })
 
+//get user weights
+app.get("/user/weight/:fbid", (req, res) => {
+    res.send( (userData.getUser(req.params.fbid)).getWeight() );
+    console.log((userData.getUser(req.params.fbid)).getWeight())
+})
+
+
+
 //add meal to a user
-app.post("/user/meal/:name", (req, res) => {
-    const user = userData.getUser(req.params.name);
+app.post("/user/meal/:fbid", (req, res) => {
+    const user = userData.getUser(req.params.fbid);
     const meal = new Meal(req.body.date, req.body.mealTime, req.body.food);
     res.send(user.addMeal(meal));
 })
