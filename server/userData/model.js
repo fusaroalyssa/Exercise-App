@@ -58,6 +58,11 @@ class User
     {
         this.friendsList.push(friend);
     }
+
+    getFriends()
+    {
+        return this.friendsList;
+    }
     
     addWeight(weight)
     {
@@ -78,6 +83,8 @@ class User
     {
         return this.meals;
     }
+
+    
 }
 
 

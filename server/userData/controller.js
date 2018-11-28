@@ -91,4 +91,17 @@ app.get("/user/meal/:fbid", (req, res) => {
 })
 
 
+//add frined to a user
+app.post("/user/friends/:fbid", (req, res) => {
+    const user = userData.getUser(req.params.fbid);
+    const friend = new Friend(req.body.name);
+    res.send(user.addFriend(friend));
+})
+
+//get user friends
+app.get("/user/friends/:fbid", (req, res) => {
+    res.send( (userData.getUser(req.params.fbid)).getFriends() );
+})
+
+
 module.exports = app;

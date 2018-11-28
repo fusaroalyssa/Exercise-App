@@ -27,6 +27,11 @@ export default new Router({
       path: '/exercise',
       name: 'exercise',
       component: () => import(/* webpackChunkName: "exercise" */ './views/Exercise.vue')
+    },
+    {
+      path: '/friends',
+      name: 'frineds',
+      component: () => import(/* webpackChunkName: "exercise" */ './views/Friends.vue')
     }
 
   ]

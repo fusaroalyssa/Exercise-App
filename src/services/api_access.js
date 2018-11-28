@@ -37,6 +37,14 @@ export function GetExercise(){
     return myFetch(api_root + `/user/exercise/${FBID}`)
 }
 
+export function AddFriend(friend){
+    //console.log(friend)
+    return myFetch(api_root + `/user/friends/${FBID}`, friend)
+}
+export function GetFriends(){
+    return myFetch(api_root + `/user/friends/${FBID}`)
+}
+
 export function getFBID(){
     return FBID;
 }

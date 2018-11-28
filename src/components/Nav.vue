@@ -12,7 +12,10 @@
             </li>
             <li class="nav-item">
                 <router-link class="nav-link" exact-active-class="active" to="/exercise">Exercise</router-link>
-            </li>            
+            </li>     
+            <li class="nav-item">
+                <router-link class="nav-link" exact-active-class="active" to="/friends">Friends</router-link>
+            </li>        
         </ul>
     </nav>
 </template>
