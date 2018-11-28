@@ -60,8 +60,8 @@ app.post("/users/friend/:name", (req, res) => {
 })
 
 //add weight entry to a user
-app.post("/user/weight/:name", (req, res) => {
-    const user = userData.getUser(req.params.name);
+app.post("/user/weight/:fbid", (req, res) => {
+    const user = userData.getUser(req.params.fbid);
     const weight = new Weight(req.body.date, req.body.weight);
     res.send(user.addWeight(weight));
 })

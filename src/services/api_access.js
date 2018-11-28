@@ -15,13 +15,13 @@ export function GetUsers(){
     return myFetch(api_root + `/users`)
 }
 export function AddWeight(weight){
-    return myFetch(api_root + `/user/weight/${UserId}`, weight)
+    return myFetch(api_root + `/user/weight/${FBID}`, weight)
 }
 export function AddMeal(meal){
-    return myFetch(api_root + `/user/meal/${UserId}`, meal)
+    return myFetch(api_root + `/user/meal/${FBID}`, meal)
 }
 export function AddExercise(exercise){
-    return myFetch(api_root + `/users/exercise/${UserId}`, exercise)
+    return myFetch(api_root + `/users/exercise/${FBID}`, exercise)
 }
 export function getFBID(){
     return FBID;

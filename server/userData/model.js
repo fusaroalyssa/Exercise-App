@@ -10,9 +10,9 @@ class UserData
         this.users.push(user);
     }
 
-    getUser(name)
+    getUser(fbid)
     {
-        var index = this.users.findIndex(user => user.name === name);
+        var index = this.users.findIndex(user => user.fbid === fbid);
         return this.users[index];
     }
     login(name, fbid, access_token)
