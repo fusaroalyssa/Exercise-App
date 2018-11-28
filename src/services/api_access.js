@@ -1,6 +1,8 @@
 //const api_root = "http://localhost:80/userData";
 const api_root = "http://localhost:80";
 export let UserId = null;
+export let FBID = null;
+export let UserName = null;
 
 export function GetState(){
     return myFetch(api_root + "/");
@@ -21,9 +23,13 @@ export function AddMeal(meal){
 export function AddExercise(exercise){
     return myFetch(api_root + `/users/exercise/${UserId}`, exercise)
 }
+export function getFBID(){
+    return FBID;
+}
 
 export function Login(name, fbid, access_token){
-    UserId = access_token;
+    UserName = name;
+    FBID = fbid;
     return myFetch(api_root + `/users`, { name, fbid, access_token})
         .then(x=> UserId = x.id);
 }

@@ -1,6 +1,10 @@
 <template>
   <div class="home">
 
+<img :src="`https://graph.facebook.com/${FBID()}/picture`" />
+<h3 v-if="UserName() !== null">Welcome {{UserName()}}</h3>
+<h3 v-if="UserName() === null">Not logged in</h3>
+<!--
   <h3>Create Account</h3>
   <form @submit.prevent="addUser">
     <div class="form-group">
@@ -17,9 +21,9 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
-
-  <h3>Login with Facebook</h3>
-  <form @submit.prevent="login">
+-->
+  <h4 v-if="UserName() === null">Login with Facebook</h4>
+  <form @submit.prevent="login" v-if="UserName() === null">
     <button type="submit" class="btn btn-primary">Login</button>
   </form>
 
@@ -37,7 +41,8 @@ import * as fb from '@/services/facebook';
 export default {
   data(){
     return{
-      name: null, email: null, password: null,
+      //name: this.login,
+      //name: null, email: null, password: null,
       state:{
         //users: []
       }
@@ -57,7 +62,13 @@ export default {
     login() {
       fb.FBLogin();
     },
+    /*getFBid() {
+      api.getFBID();
+    },*/
+    FBID: ()=> api.FBID,
+    UserId: ()=> api.UserId,
+    UserName: ()=> api.UserName
+    
   }
 }
 </script>
-

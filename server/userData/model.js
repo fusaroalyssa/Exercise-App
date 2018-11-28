@@ -15,14 +15,27 @@ class UserData
         var index = this.users.findIndex(user => user.name === name);
         return this.users[index];
     }
+    login(name, fbid, access_token)
+    {
+        let user = this.user.find(x=> x.fbid == fbid);
+        if(!user){
+            user = new User(name, fbid, access_token);
+            this.user.push(user);
+        }
+        user.access_token = access_token;
+        return user;
+    }
 }
 
 class User
 {
     
     constructor(name, email, password)
+    //constructor(name, fbid, access_token)
     {
         this.name = name;
+        //this. fbid = fbid;
+        //this.access_token = access_token;
         this.email = email;
         this.password = password;
         this.exercises = [];

@@ -13,6 +13,7 @@ app.get("/", function(req, res){
 
 
 //add a user to database
+
 app.post("/users", function(req, res){
     const user = new User(req.body.name, req.body.email, req.body.password)
     userData.addUser(user);
@@ -21,10 +22,11 @@ app.post("/users", function(req, res){
 
 
 //add user with facebook
+/*
 app.post("/users", (req, res) => {
     const user = userData.login(req.body.name, req.body.fbid, req.body.access_token)
     res.send(user);
-})
+})*/
 
 //display all users info in database
 app.get("/users", function(req, res){

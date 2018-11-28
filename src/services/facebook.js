@@ -33,7 +33,8 @@
 function statusChangeCallback(response){
     FB.api("/me", data =>{
         console.log(data);
-        api.Login(data.name, data.id, response.authResponse.accessToken)
+        //api.Login(data.name, data.id, response.authResponse.accessToken)
+        api.Login(data.name, response.authResponse.userID, response.authResponse.accessToken)
     })
     console.log(response);
 }
