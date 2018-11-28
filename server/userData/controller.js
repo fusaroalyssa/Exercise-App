@@ -15,7 +15,8 @@ app.get("/", function(req, res){
 //add a user to database
 
 app.post("/users", function(req, res){
-    const user = new User(req.body.name, req.body.email, req.body.password)
+    //const user = new User(req.body.name, req.body.email, req.body.password)
+    const user = new User(req.body.name, req.body.fbid, req.body.access_token)
     userData.addUser(user);
     res.send(user);
 })

@@ -30,14 +30,14 @@ class UserData
 class User
 {
     
-    constructor(name, email, password)
-    //constructor(name, fbid, access_token)
+    //constructor(name, email, password)
+    constructor(name, fbid, access_token)
     {
         this.name = name;
-        //this. fbid = fbid;
-        //this.access_token = access_token;
-        this.email = email;
-        this.password = password;
+        this. fbid = fbid;
+        this.access_token = access_token;
+        //this.email = email;
+        //this.password = password;
         this.exercises = [];
         this.friendsList = [];
         this.weights = [];

@@ -31,7 +31,7 @@ export function Login(name, fbid, access_token){
     UserName = name;
     FBID = fbid;
     return myFetch(api_root + `/users`, { name, fbid, access_token})
-        .then(x=> UserId = x.id);
+        //.then(x=> UserId = x.id);
 }
 
   function myFetch(url = ``, data = null) {
