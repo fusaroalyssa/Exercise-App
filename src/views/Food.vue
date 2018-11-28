@@ -44,7 +44,27 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    <br>
 
+
+    <button @click.prevent="getMeal">getMeal Button</button>
+    
+    <table  class="table table-bordered table-primary">
+    <thead class="thead-dark">
+        <tr>
+        <th scope="col">Date (year-month-day)</th>
+        <th scope="col">Time</th>
+        <th scope="col">Food</th>
+        </tr>
+    </thead>
+    <tbody v-for="m in state.meal" :key="m">
+        <tr>
+        <th scope="row">{{m.date}}</th>
+        <td>{{m.mealTime}}</td>
+        <td>{{m.food}}</td>
+        </tr>
+    </tbody>
+    </table>
 
     </div>
 </template>
@@ -58,7 +78,10 @@ import * as api from '@/services/api_access';
 export default {
     data(){
         return{
-            date: null, meal: null, food: null
+            date: null, meal: null, food: null,
+            state: {
+                meal: []
+            }
         }
     },
     methods: {
@@ -68,6 +91,10 @@ export default {
         },
         addMeal(){
             api.AddMeal({date: this.date, mealTime: this.meal, food: this.food})
+        },
+        getMeal(){
+            api.GetMeal()
+            .then(x=> this.state.meal = x)
         }
     }
 }

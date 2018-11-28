@@ -51,6 +51,11 @@ app.post("/users/exercise/:fbid", (req, res) => {
     res.send(user.addExercise(exercise));
 })
 
+//get user exercise
+app.get("/user/exercise/:fbid", (req, res) => {
+    res.send( (userData.getUser(req.params.fbid)).getExercise() );
+})
+
 
 //add a friend to a user
 app.post("/users/friend/:fbid", (req, res) => {
@@ -69,7 +74,6 @@ app.post("/user/weight/:fbid", (req, res) => {
 //get user weights
 app.get("/user/weight/:fbid", (req, res) => {
     res.send( (userData.getUser(req.params.fbid)).getWeight() );
-    console.log((userData.getUser(req.params.fbid)).getWeight())
 })
 
 
@@ -79,6 +83,11 @@ app.post("/user/meal/:fbid", (req, res) => {
     const user = userData.getUser(req.params.fbid);
     const meal = new Meal(req.body.date, req.body.mealTime, req.body.food);
     res.send(user.addMeal(meal));
+})
+
+//get user meals
+app.get("/user/meal/:fbid", (req, res) => {
+    res.send( (userData.getUser(req.params.fbid)).getMeal() );
 })
 
 

@@ -49,6 +49,11 @@ class User
         this.exercises.push(exercise);
     }
 
+    getExercise()
+    {
+        return this.exercises;
+    }
+
     addFriend(friend)
     {
         this.friendsList.push(friend);
@@ -67,6 +72,11 @@ class User
     addMeal(meal)
     {
         this.meals.push(meal);
+    }
+
+    getMeal()
+    {
+        return this.meals;
     }
 }
 

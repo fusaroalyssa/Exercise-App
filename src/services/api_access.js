@@ -7,11 +7,11 @@ export let UserName = null;
 export function GetState(){
     return myFetch(api_root + "/");
 }
-
+/*
 export function AddUser(user){
     UserId = user.name;
     return myFetch(api_root + `/users`, user)
-}
+}*/
 export function GetUsers(){
     return myFetch(api_root + `/users`)
 }
@@ -26,9 +26,15 @@ export function GetWeight(){
 export function AddMeal(meal){
     return myFetch(api_root + `/user/meal/${FBID}`, meal)
 }
+export function GetMeal(){
+    return myFetch(api_root + `/user/meal/${FBID}`)
+}
 
 export function AddExercise(exercise){
     return myFetch(api_root + `/users/exercise/${FBID}`, exercise)
+}
+export function GetExercise(){
+    return myFetch(api_root + `/user/exercise/${FBID}`)
 }
 
 export function getFBID(){

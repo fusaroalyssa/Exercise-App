@@ -21,6 +21,28 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
+
+    <button @click.prevent="getExercise">getExercise Button</button>
+    
+    <table  class="table table-bordered table-primary">
+    <thead class="thead-dark">
+        <tr>
+        <th scope="col">Date (year-month-day)</th>
+        <th scope="col">Exercise</th>
+        <th scope="col">Time</th>
+        </tr>
+    </thead>
+    <tbody v-for="e in state.exercise" :key="e">
+        <tr>
+        <th scope="row">{{e.date}}</th>
+        <td>{{e.exName}}</td>
+        <td>hour: {{e.hour}} min: {{e.min}} sec: {{e.sec}}</td>
+        </tr>
+    </tbody>
+    </table>
+
+
+
     </div>
 </template>
 
@@ -33,7 +55,10 @@ import * as api from '@/services/api_access';
 export default {
     data(){
         return{
-            date: null, exercise: null, hours: null, mins: null, secs: null
+            date: null, exercise: null, hours: null, mins: null, secs: null,
+            state:{
+                exercise: []
+            }
         }
     },
     methods: {
@@ -43,6 +68,10 @@ export default {
         },
         addExercise(){
             api.AddExercise({date: this.date, exName: this.exercise, hour: this.hours, min: this.mins, sec: this.secs})
+        },
+        getExercise(){
+            api.GetExercise()
+            .then(x=> this.state.exercise = x)
         }
     }    
 }

@@ -27,12 +27,6 @@
     <button type="submit" class="btn btn-primary">Login</button>
   </form>
 
-  <h1 v-for="w in state.weight" :key="w">weight {{w}}</h1>
-
-  <form @submit.prevent="getWeight">
-    <button type="submit" class="btn btn-primary">getweight</button>
-    <h1 v-for="w in state.weight" :key="w">my weight {{w}}</h1>
-  </form>
 
   </div>   
 </template>
@@ -51,7 +45,10 @@ export default {
       //name: this.login,
       //name: null, email: null, password: null,
       state:{
-        weight: []
+        weight: [],
+        meal: [],
+        exercise: [],
+        friends: [],
       }
     }
   },
@@ -60,22 +57,23 @@ export default {
       api.GetState()
       .then(x=> this.state = x)
     },
-    addUser(){
-      api.AddUser({ name: this.name, email: this.email, password: this.password})
+    getState(){
+      api.GetWeight()
+      .then(x=> this.state.weight = x)
+      api.GetMeal()
+      .then(x=> this.state.meal = x)
+      api.GetExercise()
+      .then(x=> this.state.exercise = x)
     },
+    /*addUser(){
+      api.AddUser({ name: this.name, email: this.email, password: this.password})
+    },*/
     getUsers(){
       api.GetUsers()
     },
     login() {
       fb.FBLogin();
     },
-    getWeight(){
-      api.GetWeight()
-      .then(x=> this.state.weight = x)
-    },
-    /*getFBid() {
-      api.getFBID();
-    },*/
     FBID: ()=> api.FBID,
     UserId: ()=> api.UserId,
     UserName: ()=> api.UserName

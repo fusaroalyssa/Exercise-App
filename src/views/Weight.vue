@@ -12,6 +12,25 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
    </form>
+    <br>
+
+    
+  <button @click.prevent="getWeight">getWeight Button</button>
+    
+    <table  class="table table-bordered table-primary">
+    <thead class="thead-dark">
+        <tr>
+        <th scope="col">Date (year-month-day)</th>
+        <th scope="col">Weight</th>
+        </tr>
+    </thead>
+    <tbody v-for="w in state.weight" :key="w">
+        <tr>
+        <th scope="row">{{w.date}}</th>
+        <td>{{w.weight}}</td>
+        </tr>
+    </tbody>
+    </table>
 
 
 
@@ -29,10 +48,8 @@ export default {
         return{
             date: null, email:null,
             state: {
-                //weight: []  
+                weight: []  
             },
-            weights: []
-
         }
     },
     methods: {
@@ -45,8 +62,8 @@ export default {
         },
         getWeight(){
             api.GetWeight()
-            .then(x=> this.weights = x)
-        }
+            .then(x=> this.state.weight = x)
+        },
     }
 }
 </script>
