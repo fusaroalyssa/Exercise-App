@@ -1,5 +1,5 @@
 <template>
-    <div>Weight Page
+    <div>
 
     <form @submit.prevent="addWeight">
         <div class="form-group">

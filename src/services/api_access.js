@@ -4,6 +4,7 @@ const api_root = "http://localhost:80";
 export let FBID = null;
 export let UserName = null;
 
+
 export function GetState(){
     return myFetch(api_root + "/");
 }
@@ -45,7 +46,7 @@ export function GetFriends(){
     return myFetch(api_root + `/user/friends/${FBID}`)
 }
 
-export function getFBID(){
+export function GetFBID(){
     return FBID;
 }
 

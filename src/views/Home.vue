@@ -4,7 +4,11 @@
 <!--<img :src="`https://graph.facebook.com/${FBID()}/picture`" />-->
 <h3 v-if="UserName() !== null">Welcome {{UserName()}}</h3>
 <h3 v-if="UserName() === null">Not logged in</h3>
+
 <!--
+<h3 v-if="this.userFBID !== null">Welcome {{UserName()}}</h3>
+<h3 v-if="this.userFBID === null">Not logged in</h3>
+
   <h3>Create Account</h3>
   <form @submit.prevent="addUser">
     <div class="form-group">
@@ -22,7 +26,7 @@
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 -->
-  <h4 v-if="UserName() === null">Login with Facebook</h4>
+  <h4 v-if="this.userFBID === null">Login with Facebook</h4>
   <form @submit.prevent="login" v-if="UserName() === null">
     <button type="submit" class="btn btn-primary">Login</button>
   </form>
@@ -96,6 +100,8 @@ export default {
       //name: this.login,
       //name: null, email: null, password: null,
       state:{
+        //userName: null,
+        //userFBID: null,
         weight: [],
         meal: [],
         exercise: [],
@@ -103,12 +109,13 @@ export default {
       }
     }
   },
-  /*created(){
+  created(){
       loopTimer = setInterval(this.refresh, 1000);
-  },*/
+  },
   methods: {
     refresh(){
       this.getState()
+      //this.UserName()
     },
     getState(){
       api.GetWeight()
@@ -117,6 +124,8 @@ export default {
       .then(x=> this.state.meal = x)
       api.GetExercise()
       .then(x=> this.state.exercise = x)
+      //api.GetFBID()
+      //.then(x=> this.state.userFBID = x)
     },
     /*addUser(){
       api.AddUser({ name: this.name, email: this.email, password: this.password})
@@ -126,10 +135,11 @@ export default {
     },
     login() {
       fb.FBLogin()
+      .then(this.refresh)
       //.then(window.location.reload())
     },
     FBID: ()=> api.FBID,
-    UserId: ()=> api.UserId,
+    //UserId: ()=> api.UserId,
     UserName: ()=> api.UserName
     
   }

@@ -34,7 +34,7 @@ export default {
         //.then(window.location.reload())
     },
     FBID: ()=> api.FBID,
-    UserId: ()=> api.UserId,
+    //UserId: ()=> api.UserId,
     UserName: ()=> api.UserName
   }
 }

@@ -1,6 +1,5 @@
 <template>
-    <div>Friends Page
-
+    <div>
     <form @submit.prevent="addFriend">
         <div class="form-group">
             <label for="name">Name</label>

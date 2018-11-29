@@ -1,6 +1,5 @@
 <template>
-    <div>Exercise Page
-
+    <div>
     <form @submit.prevent="addExercise">
         <div class="form-group">
             <label for="date">Date</label>

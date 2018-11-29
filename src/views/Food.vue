@@ -1,5 +1,5 @@
 <template>
-    <div>Food Page
+    <div>
     <form @submit.prevent="addMeal">
         <div class="form-group">
         <label for="date">Date</label>
