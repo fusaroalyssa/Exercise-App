@@ -94,7 +94,8 @@ app.get("/user/friends/:fbid", (req, res) => {
 //add a friend to a user
 app.post("/user/friends/:fbid", (req, res) => {
     const user = userData.getUser(req.params.fbid);
-    const friend = new Friend(req.body.fbid);
+    const friend = new Friend(req.body.name, req.body.fbid);
+    console.log(friend)
     res.send(user.addFriend(friend));
 })
 

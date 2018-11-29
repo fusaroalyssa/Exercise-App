@@ -104,9 +104,10 @@ class Exercise
 
 class Friend
 {
-    constructor(name)
+    constructor(name, fbid)
     {
         this.name = name;
+        this.fbid = fbid;
     }
 }
 

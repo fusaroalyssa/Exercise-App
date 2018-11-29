@@ -58,7 +58,7 @@ import * as api from '@/services/api_access';
 export default {
     data(){
         return{
-            //name: null,
+            friendName: null,
             friendFBID: null,
             state: {
                 friends: [],  
@@ -72,8 +72,8 @@ export default {
             .then(x=> this.state = x)
         },
         addFriend(){
-            //api.AddFriend({name: this.name, fbid: this.friendFBID})
-            api.AddFriend({fbid: this.friendFBID})
+            api.AddFriend({name: this.friendName, fbid: this.friendFBID})
+            //api.AddFriend({fbid: this.friendFBID})
         },
         getFriends(){
             api.GetFriends()
