@@ -1,6 +1,6 @@
 //const api_root = "http://localhost:80/userData";
 const api_root = "http://localhost:80";
-export let UserId = null;
+//export let UserId = null;
 export let FBID = null;
 export let UserName = null;
 
@@ -50,10 +50,18 @@ export function getFBID(){
 }
 
 export function Login(name, fbid, access_token){
-    UserName = name;
-    FBID = fbid;
-    return myFetch(api_root + `/users`, { name, fbid, access_token})
-        //.then(x=> UserId = x.id);
+    
+            UserName = name;
+            FBID = fbid;
+            return myFetch(api_root + `/users`, { name: name, fbid: fbid, access_token: access_token})
+            //.then(x=> UserId = x.id);
+    
+}
+
+export function Logout(){
+    //UserId = null;
+    FBID = null;
+    UserName = null;
 }
 
   function myFetch(url = ``, data = null) {

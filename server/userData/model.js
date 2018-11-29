@@ -17,10 +17,11 @@ class UserData
     }
     login(name, fbid, access_token)
     {
-        let user = this.user.find(x=> x.fbid == fbid);
+        let user = this.users.find(x=> x.fbid == fbid);
         if(!user){
             user = new User(name, fbid, access_token);
-            this.user.push(user);
+            this.users.push(user);
+            //console.log(user);
         }
         user.access_token = access_token;
         return user;

@@ -103,10 +103,12 @@ export default {
       }
     }
   },
+  /*created(){
+      loopTimer = setInterval(this.refresh, 1000);
+  },*/
   methods: {
     refresh(){
-      api.GetState()
-      .then(x=> this.state = x)
+      this.getState()
     },
     getState(){
       api.GetWeight()
@@ -123,7 +125,8 @@ export default {
       api.GetUsers()
     },
     login() {
-      fb.FBLogin();
+      fb.FBLogin()
+      //.then(window.location.reload())
     },
     FBID: ()=> api.FBID,
     UserId: ()=> api.UserId,

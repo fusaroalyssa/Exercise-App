@@ -16,8 +16,8 @@ app.get("/", function(req, res){
 
 app.post("/users", function(req, res){
     //const user = new User(req.body.name, req.body.email, req.body.password)
-    const user = new User(req.body.name, req.body.fbid, req.body.access_token)
-    userData.addUser(user);
+    const user = userData.login(req.body.name, req.body.fbid, req.body.access_token)
+    //userData.addUser(user);
     res.send(user);
 })
 
@@ -73,7 +73,9 @@ app.post("/user/weight/:fbid", (req, res) => {
 
 //get user weights
 app.get("/user/weight/:fbid", (req, res) => {
-    res.send( (userData.getUser(req.params.fbid)).getWeight() );
+    const user = userData.getUser(req.params.fbid);
+    console.log(user);
+    res.send( user.getWeight() );
 })
 
 
