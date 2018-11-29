@@ -1,5 +1,6 @@
 <template>
     <div>
+    <!--
     <form @submit.prevent="addFriend">
         <div class="form-group">
             <label for="name">Name</label>
@@ -8,6 +9,24 @@
         <button type="submit" class="btn btn-primary">Submit</button>
    </form>
     <br>
+    -->
+
+<button @click.prevent="getUsers">getUsers Button</button>
+    
+  <table  class="table table-primary">
+  <thead class="thead-dark">
+      <tr>
+      <th scope="col">Name</th>
+      <th scope="col"></th>
+      </tr>
+  </thead>
+  <tbody v-for="u in state.users" :key="u">
+      <tr>
+      <th scope="row" friendFBID = u.fbid>{{u.name}}</th>
+      <th scope="row"><button @click.prevent="addFriend">+</button></th>
+      </tr>
+  </tbody>
+  </table>
 
 
   <button @click.prevent="getFriends">getFriends Button</button>
@@ -39,9 +58,11 @@ import * as api from '@/services/api_access';
 export default {
     data(){
         return{
-            name: null,
+            //name: null,
+            friendFBID: null,
             state: {
-                friends: []  
+                friends: [],  
+                users:[]
             },
         }
     },
@@ -51,12 +72,17 @@ export default {
             .then(x=> this.state = x)
         },
         addFriend(){
-            api.AddFriend({name: this.name})
+            //api.AddFriend({name: this.name, fbid: this.friendFBID})
+            api.AddFriend({fbid: this.friendFBID})
         },
         getFriends(){
             api.GetFriends()
             .then(x=> this.state.friends = x)
         },
+        getUsers(){
+            api.GetUsers()
+            .then(x=> this.state.users = x)
+        }
     }
 }
 </script>

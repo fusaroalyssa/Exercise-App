@@ -43,7 +43,7 @@ class User
         this.friendsList = [];
         this.weights = [];
         this.meals = [];
-    } 
+    }
 
     addExercise(exercise)
     {

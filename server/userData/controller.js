@@ -57,13 +57,6 @@ app.get("/user/exercise/:fbid", (req, res) => {
 })
 
 
-//add a friend to a user
-app.post("/users/friend/:fbid", (req, res) => {
-    const user = userData.getUser(req.params.fbid);
-    const friend = new Friend(req.body.name);
-    res.send(user.addFriend(friend));
-})
-
 //add weight entry to a user
 app.post("/user/weight/:fbid", (req, res) => {
     const user = userData.getUser(req.params.fbid);
@@ -93,16 +86,16 @@ app.get("/user/meal/:fbid", (req, res) => {
 })
 
 
-//add frined to a user
-app.post("/user/friends/:fbid", (req, res) => {
-    const user = userData.getUser(req.params.fbid);
-    const friend = new Friend(req.body.name);
-    res.send(user.addFriend(friend));
-})
-
 //get user friends
 app.get("/user/friends/:fbid", (req, res) => {
     res.send( (userData.getUser(req.params.fbid)).getFriends() );
+})
+
+//add a friend to a user
+app.post("/user/friends/:fbid", (req, res) => {
+    const user = userData.getUser(req.params.fbid);
+    const friend = new Friend(req.body.fbid);
+    res.send(user.addFriend(friend));
 })
 
 
