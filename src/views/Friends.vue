@@ -20,10 +20,10 @@
       <th scope="col"></th>
       </tr>
   </thead>
-  <tbody v-for="u in state.users" :key="u">
+  <tbody v-for="u in state.users" :key="u" v-if="FBID() != u.fbid">
       <tr>
-      <th scope="row" friendFBID = u.fbid>{{u.name}}</th>
-        <th scope="row"><button @click.prevent="addFriend({fbid: u.fdib, name: u.name})">+</button></th>
+      <th  scope="row" friendFBID = u.fbid>{{u.name}}</th>
+        <th  scope="row"><button @click.prevent="addFriend({fbid: u.fdib, name: u.name})">+</button></th>
       </tr>
   </tbody>
   </table>
@@ -61,6 +61,8 @@ export default {
             //friendName: null,
             //friendFBID: null,
             state: {
+                userName: null,
+                userFBID: null,
                 friends: [],  
                 users:[]
             },
@@ -81,7 +83,9 @@ export default {
         getUsers(){
             api.GetUsers()
             .then(x=> this.state.users = x)
-        }
+        },
+        FBID: ()=> api.FBID,
+        UserName: ()=> api.UserName
     }
 }
 </script>
