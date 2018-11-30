@@ -57,7 +57,10 @@ class User
 
     addFriend(friend)
     {
-        this.friendsList.push(friend);
+        let f = this.friendsList.find(x=> x.fbid == friend.fbid);
+        if(!f){
+            this.friendsList.push(friend);
+        }
     }
 
     getFriends()

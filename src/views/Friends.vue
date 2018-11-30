@@ -23,7 +23,7 @@
   <tbody v-for="u in state.users" :key="u" v-if="FBID() != u.fbid">
       <tr>
       <th  scope="row" friendFBID = u.fbid>{{u.name}}</th>
-        <th  scope="row"><button @click.prevent="addFriend({fbid: u.fdib, name: u.name})">+</button></th>
+        <th  scope="row"><button @click.prevent="addFriend({fbid: u.fbid, name: u.name})">+</button></th>
       </tr>
   </tbody>
   </table>
