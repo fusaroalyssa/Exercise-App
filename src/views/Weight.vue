@@ -8,7 +8,7 @@
         </div>
         <div class="form-group">
             <label for="weight">Weight</label>
-            <input type="weight" class="form-control" id="weight" placeholder="Enter weight" v-model="weight">
+            <input type="weight" class="form-control" id="weight" placeholder="Enter Weight" v-model="weight">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
    </form>
@@ -46,7 +46,8 @@ import * as api from '@/services/api_access';
 export default {
     data(){
         return{
-            date: null, email:null,
+            date: null, weight:null,
+            datePlace: "empty",
             state: {
                 weight: []  
             },
@@ -59,6 +60,7 @@ export default {
         },
         addWeight(){
             api.AddWeight({date: this.date, weight: this.weight})
+            .then(this.date = null, this.weight = null)
         },
         getWeight(){
             api.GetWeight()

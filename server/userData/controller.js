@@ -67,7 +67,6 @@ app.post("/user/weight/:fbid", (req, res) => {
 //get user weights
 app.get("/user/weight/:fbid", (req, res) => {
     const user = userData.getUser(req.params.fbid);
-    console.log(user);
     res.send( user.getWeight() );
 })
 

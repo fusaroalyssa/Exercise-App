@@ -67,6 +67,7 @@ export default {
         },
         addExercise(){
             api.AddExercise({date: this.date, exName: this.exercise, hour: this.hours, min: this.mins, sec: this.secs})
+            .then(this.date = null, this.exercise = null, this.hours = null, this.mins = null, this.secs = null)
         },
         getExercise(){
             api.GetExercise()

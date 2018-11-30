@@ -91,6 +91,8 @@ export default {
         },
         addMeal(){
             api.AddMeal({date: this.date, mealTime: this.meal, food: this.food})
+            .then(this.date = null, this.meal = null, this.food = null)
+            //.then(this.getMeal())
         },
         getMeal(){
             api.GetMeal()
