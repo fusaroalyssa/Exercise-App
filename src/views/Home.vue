@@ -14,6 +14,7 @@
   </form>
 
   <button @click.prevent="getState">getTables Button</button>
+  <a href="/"></a>
     
   <table  class="table table-bordered table-primary">
   <thead class="thead-dark">
@@ -64,6 +65,7 @@
   </tbody>
   </table>
 
+
   </div>   
 </template>
 
@@ -92,9 +94,13 @@ export default {
       }
     }
   },
-  /*created(){
-      loopTimer = setInterval(this.refresh, 1000);
-  },*/
+  created(){
+      if(userName !== null)
+      {
+        loopTimer = setInterval(this.refresh, 1000);
+      }
+      
+  },
   methods: {
     refresh(){
       this.getState()

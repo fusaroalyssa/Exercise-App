@@ -23,7 +23,7 @@
   <tbody v-for="u in state.users" :key="u">
       <tr>
       <th scope="row" friendFBID = u.fbid>{{u.name}}</th>
-      <th scope="row"><button @click.prevent="addFriend">+</button></th>
+        <th scope="row"><button @click.prevent="addFriend({fbid: u.fdib, name: u.name})">+</button></th>
       </tr>
   </tbody>
   </table>
@@ -58,8 +58,8 @@ import * as api from '@/services/api_access';
 export default {
     data(){
         return{
-            friendName: null,
-            friendFBID: null,
+            //friendName: null,
+            //friendFBID: null,
             state: {
                 friends: [],  
                 users:[]
@@ -71,9 +71,8 @@ export default {
             api.GetState()
             .then(x=> this.state = x)
         },
-        addFriend(){
-            api.AddFriend({name: this.friendName, fbid: this.friendFBID})
-            //api.AddFriend({fbid: this.friendFBID})
+        addFriend(friend){
+            api.AddFriend(friend);
         },
         getFriends(){
             api.GetFriends()
