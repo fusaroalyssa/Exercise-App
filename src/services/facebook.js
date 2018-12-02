@@ -23,18 +23,23 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 
-   export function FBLogin(){
+   export function FBLogin(call_back){
     FB.login(
-     response => statusChangeCallback(response), 
+     response => statusChangeCallback(response, call_back), 
     {scope: 'public_profile,email,user_photos'}
     )
 }
 
-function statusChangeCallback(response){
+function statusChangeCallback(response, call_back){
     FB.api("/me", data =>{
-        console.log(data);
+        //console.log(data);
         //api.Login(data.name, data.id, response.authResponse.accessToken)
         api.Login(data.name, response.authResponse.userID, response.authResponse.accessToken)
+        .then(x=>{
+            if(call_back){
+                call_back(x)
+            }
+        })
     })
-    console.log(response);
+    //console.log(response);
 }

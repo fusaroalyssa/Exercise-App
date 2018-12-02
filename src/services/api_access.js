@@ -46,12 +46,12 @@ export function GetFriends(){
     return myFetch(api_root + `/user/friends/${FBID}`)
 }
 
-/*export function GetFBID(){
+export function GetFBID(){
     return FBID;
 }
 export function GetName(){
     return UserName
-}*/
+}
 
 export function Login(name, fbid, access_token){
     

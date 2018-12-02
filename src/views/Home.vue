@@ -1,20 +1,20 @@
 <template>
   <div class="home">
 
-  <h3 v-if="UserName() !== null">Welcome {{UserName()}}</h3>
+  <!--<h3 v-if="UserName() !== null">Welcome {{UserName()}}</h3>
   <h3 v-if="UserName() === null">Not logged in</h3>
+  <h4 v-if="UserName() === null">Login with Facebook</h4>-->
   
-  <!--<h3 v-if="state.userName !== null">Welcome {{state.userName}}</h3>
+  <h3 v-if="(state.userName !== null)">Welcome {{state.userName}}</h3>
   <h3 v-if="state.userName === null">Not logged in</h3>
-  <h4 v-if="state.userName === null">Login with Facebook</h4>-->
+  <h4 v-if="state.userName === null">Login with Facebook</h4>
 
-  <h4 v-if="UserName() === null">Login with Facebook</h4>
-  <form @submit.prevent="login" v-if="UserName() === null">
+ <!--<form @submit.prevent="login" v-if="UserName() === null">-->
+  <form @submit.prevent="login" v-if="state.userName === null">
     <button type="submit" class="btn btn-primary">Login</button>
   </form>
 
   <button @click.prevent="getState">getTables Button</button>
-  <a href="/"></a>
     
   <table  class="table table-bordered table-primary">
   <thead class="thead-dark">
@@ -80,6 +80,7 @@
 <script>
 import * as api from '@/services/api_access';
 import * as fb from '@/services/facebook';
+//let loopTimer = null;  
 
 export default {
   data(){
@@ -89,22 +90,27 @@ export default {
         userFBID: null,
         weight: [],
         meal: [],
-        exercise: [],
+        exercise: [], 
         friends: [],
       }
     }
   },
   created(){
-      if(userName !== null)
-      {
-        loopTimer = setInterval(this.refresh, 1000);
-      }
+      //if(this.userName !== null)
+      //{
+        //loopTimer = setInterval(this.refresh, 1000);
+      //}
       
-  },
+  },  
   methods: {
     refresh(){
-      this.getState()
+      //this.login()
+      //this.getState()
       //this.UserName()
+    },
+    setUserInfo()
+    {
+      this.state.userName = api.GetName()
     },
     getState(){
       api.GetWeight()
@@ -122,14 +128,15 @@ export default {
       api.GetUsers()
     },
     login() {
-      fb.FBLogin()
+      fb.FBLogin(()=>{
+        this.state.userName = api.GetName()
+      })
       //.then(this.getState())
       //.then(window.location.reload())
     },
     FBID: ()=> api.FBID,
     //UserId: ()=> api.UserId,
-    UserName: ()=> api.UserName
-    
+    UserName: ()=> api.UserName 
   }
 }
 </script>
