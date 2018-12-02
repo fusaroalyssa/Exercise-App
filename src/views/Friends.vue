@@ -11,7 +11,7 @@
     <br>
     -->
 
-<button @click.prevent="getUsers">getUsers Button</button>
+<button @click.prevent="getUsers">Click here to see friends you can add</button>
     
   <table  class="table table-primary">
   <thead class="thead-dark">
@@ -29,7 +29,7 @@
   </table>
 
 
-  <button @click.prevent="getFriends">getFriends Button</button>
+  <button @click.prevent="getFriends">Click here to see your friends</button>
     
     <table  class="table table-bordered table-primary">
     <thead class="thead-dark">

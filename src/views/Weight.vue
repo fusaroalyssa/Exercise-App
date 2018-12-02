@@ -15,7 +15,7 @@
     <br>
 
     
-  <button @click.prevent="getWeight">getWeight Button</button>
+  <button @click.prevent="getWeight">Click here to see your weights</button>
     
     <table  class="table table-bordered table-primary">
     <thead class="thead-dark">

@@ -21,7 +21,7 @@
     </form>
 
 
-    <button @click.prevent="getExercise">getExercise Button</button>
+    <button @click.prevent="getExercise">Click here to see your exercises</button>
     
     <table  class="table table-bordered table-primary">
     <thead class="thead-dark">

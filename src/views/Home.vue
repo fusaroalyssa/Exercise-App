@@ -1,5 +1,10 @@
 <template>
   <div class="home">
+  
+  <!--img  v-if="userName !== null" :src="`https://graph.facebook.com/${FBID()}/picture`" />-->
+  <img  v-if="UserName() !== null" :src="`https://graph.facebook.com/${FBID()}/picture`" />
+  &nbsp;
+  <button @click.prevent="logout" v-if="UserName() !== null" type="button" class="btn btn-success">Logout</button>
 
   <!--<h3 v-if="UserName() !== null">Welcome {{UserName()}}</h3>
   <h3 v-if="UserName() === null">Not logged in</h3>
@@ -14,14 +19,14 @@
   <!--<h4 v-if="state.userName === null">Login with Facebook</h4>-->
   <h4 v-if="UserName() === null">Login with Facebook</h4>
 
- <!--<form @submit.prevent="login" v-if="UserName() === null">-->
-  <form @submit.prevent="login" v-if="state.userName === null">
+ <form @submit.prevent="login" v-if="UserName() === null">
+  <!--<form @submit.prevent="login" v-if="state.userName === null">-->
     <button type="submit" class="btn btn-primary">Login</button>
   </form>
 
-  <button @click.prevent="getState">getTables Button</button>
+  <button @click.prevent="getState">Click to see your info</button>
     
-  <table  class="table table-bordered table-primary">
+  <table class="table table-bordered table-primary">
   <thead class="thead-dark">
       <tr>
       <th scope="col">Date (year-month-day)</th>
@@ -70,6 +75,19 @@
   </tbody>
   </table>
 
+  <table  class="table table-bordered table-primary">
+    <thead class="thead-dark">
+        <tr>
+        <th scope="col">Friends</th>
+        </tr>
+    </thead>
+    <tbody v-for="f in state.friends" :key="f">
+        <tr>
+        <th scope="row">{{f.name}}</th>
+        </tr>
+    </tbody>
+    </table>
+
 
   </div>   
 </template>
@@ -113,10 +131,10 @@ export default {
       //this.getState()
       //this.UserName()
     },
-    setUserInfo()
+    /*setUserInfo()
     {
       this.state.userName = api.GetName()
-    },
+    },*/
     getState(){
       api.GetWeight()
       .then(x=> this.state.weight = x)
@@ -124,6 +142,8 @@ export default {
       .then(x=> this.state.meal = x)
       api.GetExercise()
       .then(x=> this.state.exercise = x)
+      api.GetFriends()
+      .then(x=> this.state.friends = x)
       //api.GetFBID()
       //.then(x=> this.state.userFBID = x)
       //api.GetName()

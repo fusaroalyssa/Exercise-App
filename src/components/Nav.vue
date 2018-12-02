@@ -15,10 +15,15 @@
             </li>     
             <li class="nav-item">
                 <router-link class="nav-link" exact-active-class="active" to="/friends">Friends</router-link>
-            </li>        
+            </li> 
         </ul>
     </nav>
 </template>
+
+<style lang="sass">
+  
+</style>
+
 
 <script>
 

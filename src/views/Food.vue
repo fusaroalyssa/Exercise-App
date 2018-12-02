@@ -47,7 +47,7 @@
     <br>
 
 
-    <button @click.prevent="getMeal">getMeal Button</button>
+    <button @click.prevent="getMeal">Click here to see your meals</button>
     
     <table  class="table table-bordered table-primary">
     <thead class="thead-dark">
