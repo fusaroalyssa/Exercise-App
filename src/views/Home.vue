@@ -5,9 +5,14 @@
   <h3 v-if="UserName() === null">Not logged in</h3>
   <h4 v-if="UserName() === null">Login with Facebook</h4>-->
   
-  <h3 v-if="(state.userName !== null)">Welcome {{state.userName}}</h3>
-  <h3 v-if="state.userName === null">Not logged in</h3>
-  <h4 v-if="state.userName === null">Login with Facebook</h4>
+  <h3 v-if="state.userName !== null ">Welcome {{state.userName}}</h3>
+  <h3 v-else-if="UserName() !== null">Welcome {{UserName()}}</h3>
+
+  <!--<h3 v-if="state.userName === null">Not logged in</h3>-->
+  <h3 v-if="UserName() === null">Not logged in</h3>
+
+  <!--<h4 v-if="state.userName === null">Login with Facebook</h4>-->
+  <h4 v-if="UserName() === null">Login with Facebook</h4>
 
  <!--<form @submit.prevent="login" v-if="UserName() === null">-->
   <form @submit.prevent="login" v-if="state.userName === null">
