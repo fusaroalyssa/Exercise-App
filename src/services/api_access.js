@@ -62,13 +62,24 @@ export function Login(name, fbid, access_token){
     
 }
 
-export function Logout(call_back){
-    //UserId = null;
+/*export function promiseToLogin(call_back) {
     FBID = null;
     UserName = null;
-    if(call_back){
-        call_back()
-    }
+    return(call_back)
+}*/
+
+function promiseToLogin(call_back){
+        FBID = null;
+        UserName = null;
+        if(UserName === null)
+        {
+            return call_back
+        }
+}
+
+export function Logout(call_back){
+    promiseToLogin(call_back)
+    .then(call_back())
 }
 
   function myFetch(url = ``, data = null) {

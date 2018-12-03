@@ -1,26 +1,23 @@
 <template>
   <div class="home">
   
-  <!--img  v-if="userName !== null" :src="`https://graph.facebook.com/${FBID()}/picture`" />-->
   <img  v-if="UserName() !== null" :src="`https://graph.facebook.com/${FBID()}/picture`" />
   &nbsp;
   <button @click.prevent="logout" v-if="UserName() !== null" type="button" class="btn btn-success">Logout</button>
+  <button @click.prevent="logout" v-else-if="state.userName !== null" type="button" class="btn btn-success">Logout</button>
 
-  <!--<h3 v-if="UserName() !== null">Welcome {{UserName()}}</h3>
-  <h3 v-if="UserName() === null">Not logged in</h3>
-  <h4 v-if="UserName() === null">Login with Facebook</h4>-->
   
   <h3 v-if="state.userName !== null ">Welcome {{state.userName}}</h3>
   <h3 v-else-if="UserName() !== null">Welcome {{UserName()}}</h3>
 
-  <!--<h3 v-if="state.userName === null">Not logged in</h3>-->
+
   <h3 v-if="UserName() === null">Not logged in</h3>
 
-  <!--<h4 v-if="state.userName === null">Login with Facebook</h4>-->
+ 
   <h4 v-if="UserName() === null">Login with Facebook</h4>
 
  <form @submit.prevent="login" v-if="UserName() === null">
-  <!--<form @submit.prevent="login" v-if="state.userName === null">-->
+ 
     <button type="submit" class="btn btn-primary">Login</button>
   </form>
 
@@ -164,8 +161,9 @@ export default {
     UserName: ()=> api.UserName,
     logout(){
       api.Logout(()=>{
-        this.state.userName = api.GetName()
+        this.state.userName = api.GetName(); 
       })
+      
       //api.Logout()
       //this.userName = api.GetName()
     },

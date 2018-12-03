@@ -47,7 +47,6 @@ export default {
     data(){
         return{
             date: null, weight:null,
-            datePlace: "empty",
             state: {
                 weight: []  
             },
