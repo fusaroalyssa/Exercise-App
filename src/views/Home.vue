@@ -161,7 +161,14 @@ export default {
     },
     FBID: ()=> api.FBID,
     //UserId: ()=> api.UserId,
-    UserName: ()=> api.UserName 
+    UserName: ()=> api.UserName,
+    logout(){
+      api.Logout(()=>{
+        this.state.userName = api.GetName()
+      })
+      //api.Logout()
+      //this.userName = api.GetName()
+    },
   }
 }
 </script>

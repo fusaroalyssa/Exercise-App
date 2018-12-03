@@ -62,10 +62,13 @@ export function Login(name, fbid, access_token){
     
 }
 
-export function Logout(){
+export function Logout(call_back){
     //UserId = null;
     FBID = null;
     UserName = null;
+    if(call_back){
+        call_back()
+    }
 }
 
   function myFetch(url = ``, data = null) {
