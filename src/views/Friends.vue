@@ -1,16 +1,5 @@
 <template>
     <div>
-    <!--
-    <form @submit.prevent="addFriend">
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="name" class="form-control" id="name" placeholder="Enter Friends Name" v-model="name">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-   </form>
-    <br>
-    -->
-
     
 <div>
     <input type="text" v-model="search" placeholder="search friends">
@@ -32,25 +21,6 @@
   </table>
 </div>
 
-
-
-<button @click.prevent="getUsers">Click here to see friends you can add</button>
-<!--  
-  <table  class="table table-primary">
-  <thead class="thead-dark">
-      <tr>
-      <th scope="col">Name</th>
-      <th scope="col"></th>
-      </tr>
-  </thead>
-  <tbody v-for="u in state.users" :key="u" v-if="FBID() != u.fbid">
-      <tr>
-      <th  scope="row" friendFBID = u.fbid>{{u.name}}</th>
-        <th  scope="row"><button @click.prevent="addFriend({fbid: u.fbid, name: u.name})">Click to add friend</button></th>
-      </tr>
-  </tbody>
-  </table>
--->
 
   <button @click.prevent="getFriends">Click here to see your friends</button>
     
@@ -115,6 +85,10 @@ export default {
                 return user.name.match(this.search);
             });
         }
+    },
+    created(){
+        this.getUsers();
+        this.getFriends();
     }
 }
 </script>

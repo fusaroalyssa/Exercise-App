@@ -65,6 +65,9 @@ export default {
             api.GetWeight()
             .then(x=> this.state.weight = x)
         },
+    },
+    created(){
+        this.getWeight();
     }
 }
 </script>

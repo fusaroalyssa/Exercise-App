@@ -51,6 +51,7 @@
 
 <script>
 import * as api from '@/services/api_access';
+//let loopTimer = null;
 export default {
     data(){
         return{
@@ -67,12 +68,17 @@ export default {
         },
         addExercise(){
             api.AddExercise({date: this.date, exName: this.exercise, hour: this.hours, min: this.mins, sec: this.secs})
+            //.then( this.getExercise())
             .then(this.date = null, this.exercise = null, this.hours = null, this.mins = null, this.secs = null)
         },
         getExercise(){
             api.GetExercise()
             .then(x=> this.state.exercise = x)
         }
+    }, 
+    created(){
+        this.getExercise();
+        //loopTimer = setInterval(this.getExercise, 1000);
     }    
 }
 </script>

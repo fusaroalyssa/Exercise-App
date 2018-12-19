@@ -98,6 +98,9 @@ export default {
             api.GetMeal()
             .then(x=> this.state.meal = x)
         }
+    },
+    created(){
+        this.getMeal();
     }
 }
 </script>

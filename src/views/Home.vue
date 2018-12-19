@@ -167,6 +167,9 @@ export default {
       //api.Logout()
       //this.userName = api.GetName()
     },
-  }
+  },
+  created(){
+      this.getState();
+    }
 }
 </script>
