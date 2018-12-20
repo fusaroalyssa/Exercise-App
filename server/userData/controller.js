@@ -21,6 +21,14 @@ app.post("/users", function(req, res){
     res.send(user);
 })
 
+app.post("/findUsers", function(req, res){
+    res.send();
+    return userData.findUsers(req);
+})
+
+app.post("/postSearch", function(req, res){
+    res.send(req);
+})
 
 //add user with facebook
 /*

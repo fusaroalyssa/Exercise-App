@@ -22,6 +22,31 @@
 </div>
 
 
+
+<div>
+    <input type="text" v-model="search2" placeholder="search friends">
+    <button @click.prevent="searchUsers">Search</button>
+</div>
+<div >
+    <table  class="table table-primary">
+  <thead class="thead-dark">
+      <tr>
+      <th scope="col">Name</th>
+      <th scope="col"></th>
+      </tr>
+  </thead>
+  <tbody v-for="user in state.users" :key="user" v-if="FBID() != user.fbid">
+      <tr>
+      <th  scope="row" friendFBID = user.fbid>{{user.name}}</th>
+        <th  scope="row"><button @click.prevent="addFriend({fbid: user.fbid, name: user.name})">Click to add friend</button></th>
+      </tr>
+  </tbody>
+  </table>
+</div>
+
+
+
+
   <button @click.prevent="getFriends">Click here to see your friends</button>
     
     <table  class="table table-bordered table-primary">
@@ -48,10 +73,13 @@
 
 <script>
 import * as api from '@/services/api_access';
+
 export default {
     data(){
         return{
             search: "",
+            search2: "",
+            users2: [],
             state: {
                 userName: null,
                 userFBID: null,
@@ -76,6 +104,10 @@ export default {
             api.GetUsers()
             .then(x=> this.state.users = x)
         },
+        searchUsers(){
+            api.searchUser(search2)
+            .then()
+        },
         FBID: ()=> api.FBID,
         UserName: ()=> api.UserName
     },
@@ -85,6 +117,13 @@ export default {
                 return user.name.match(this.search);
             });
         }
+        /*filteredUsers(){
+            api.postSearch(this.search)
+            .then(api.findUsers())
+        }*/
+        
+
+
     },
     created(){
         this.getUsers();

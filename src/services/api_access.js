@@ -8,6 +8,10 @@ export let UserName = null;
 export function GetState(){
     return myFetch(api_root + "/");
 }
+
+export function searchUser(search){
+    
+}
 /*
 export function AddUser(user){
     UserId = user.name;
@@ -51,6 +55,14 @@ export function GetFBID(){
 }
 export function GetName(){
     return UserName
+}
+
+export function findUsers(){
+    //return myFetch(api_root + '/findUsers')
+}
+
+export function postSearch(search){
+    return myFetch(api_root + '/search', search)
 }
 
 export function Login(name, fbid, access_token){

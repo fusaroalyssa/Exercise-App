@@ -3,6 +3,30 @@ class UserData
     constructor()
     {
         this.users = [];
+        this.search = '';
+    }
+
+    findUsers(search)
+    {
+        var foundUsers = [];
+        /*if(search === '')
+        {
+            return foundUsers;
+        }*/
+        for(var i = 0; i<0; i++)
+        {
+            if(this.users.name.match(search))
+            {
+                foundUsers.push(this.users[i])
+            }
+        }
+        return foundUsers;
+
+    }
+
+    postSearch(search)
+    {
+        this.search = search;
     }
 
     addUser(user)
