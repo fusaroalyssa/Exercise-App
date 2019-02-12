@@ -13,5 +13,5 @@
 1.  **to run**
      - npm run serve
      - npm run build
-1. **to veiw** 
+1. **to view** 
      - localhost:8080
