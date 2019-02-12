@@ -10,7 +10,7 @@
 1. **Exercise**
      - List of exercises by category
      - Keeps track of exercises
-to run
-     npm run serve, npm run build
-to veiw 
-     localhost:8080
+1.  **to run**
+     - npm run serve, npm run build
+1. **to veiw** 
+     - localhost:8080
